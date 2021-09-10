@@ -1,14 +1,21 @@
 import 'package:bubble/bubble.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_game_tutorial/consts.dart';
 import 'package:flutter_game_tutorial/generated/l10n.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:intl/intl.dart';
 import '../AppNav.dart';
+import '../assets/constant.dart' as assets;
 
 class WelcomeScreen extends StatefulWidget {
-  const WelcomeScreen({Key? key}) : super(key: key);
+  const WelcomeScreen({Key key}) : super(key: key);
 
+  @override
+  State<StatefulWidget> createState() => _MyStatefulWidgetState();
+}
+
+class _MyStatefulWidgetState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,20 +32,15 @@ class WelcomeScreen extends StatefulWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Image.asset(
-                      'assets/ic_shadow.png',
-                      width: 50.0,
-                      height: 50.0,
-                    ),
+                  assets.iconShadow(),
                     new Flexible(
                         child: new Bubble(
-                          color: const Color(0xffFECF9D),
-                          margin: BubbleEdges.only(top: 20, left: 8),
-                          alignment: Alignment.bottomLeft,
-                          nip: BubbleNip.leftTop,
-                          child: Html(
-                              data: S.of(context).welcome_html),
-                        ))
+                      color: const Color(0xffFECF9D),
+                      margin: BubbleEdges.only(top: 20, left: 8),
+                      alignment: Alignment.bottomLeft,
+                      nip: BubbleNip.leftTop,
+                      child: Html(data: S.of(context).welcome_html),
+                    ))
                   ],
                 ),
               ],
@@ -63,8 +65,8 @@ class WelcomeScreen extends StatefulWidget {
                     child: Text("Hello2"),
                     onTap: () async {
                       final currentLocal = Intl.getCurrentLocale();
-                      await S.load(Locale.fromSubtags(languageCode:
-                      currentLocal == 'ru' ? 'en' : 'ru'));
+                      await S.load(Locale.fromSubtags(
+                          languageCode: currentLocal == Const.ru ? 'en' : Const.ru));
                       setState(() {});
                     })
               ]),
@@ -72,26 +74,14 @@ class WelcomeScreen extends StatefulWidget {
         notchMargin: 7,
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: const Color(0xffcd3a3a),
+        backgroundColor: Const.red,
         onPressed: () {
-            AppNav.openEnterYourPhoneNumberScreen(context);
+          AppNav.openLoginWithTelegramScreen(context);
         },
         tooltip: 'Increment Counter',
         child: const Icon(Icons.send),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
-  }
-
-  @override
-  State<StatefulWidget> createState() => _MyStatefulWidgetState();
-
-}
-
-class _MyStatefulWidgetState extends State<WelcomeScreen> {
-
-  @override
-  Widget build(BuildContext context) {
-    return WelcomeScreen();
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_game_tutorial/screen/LoginWithTelegram.dart';
-import 'main.dart';
+import 'screen/EnterYourPhoneNumberScreen.dart';
 
 class AppNav {
 
