@@ -51,24 +51,100 @@ class _MyStatefulWidgetState extends State<WelcomeScreen> {
         shape: const CircularNotchedRectangle(),
         child: Container(
           height: 150.0,
-          child: Row(
+          child:
+          Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                // TextField(
-                //   decoration: InputDecoration(
-                //     labelText: 'New Price',
-                //   ),
-                // ),
-                InkWell(
-                    child: Text("Hello2"),
-                    onTap: () async {
-                      final currentLocal = Intl.getCurrentLocale();
-                      await S.load(Locale.fromSubtags(
-                          languageCode: currentLocal == Const.ru ? 'en' : Const.ru));
-                      setState(() {});
-                    })
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: Center(
+                      child:
+                      Container(
+                        decoration: BoxDecoration(color: Colors.white),
+                        padding: new EdgeInsets.all(20.0),
+                        child: InkWell(
+                          onTap: () {
+                            showDialog(context: context, builder: (context) {
+                              return AlertDialog(content: Text("Hello form dialog"));
+                            });
+                          },
+                          child: Stack(
+                            children: <Widget>[
+                              Container(
+                                decoration: BoxDecoration(
+                                  // color: Colors.blue,
+                                  borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                                  border: Border.all(color: Colors.blue)
+                                ),
+                                margin: EdgeInsets.only(top: 10),
+                                // child: TextField(
+                                //   textAlign: TextAlign.left,
+                                //   decoration: InputDecoration(
+                                //     labelStyle: TextStyle(
+                                //       color: Colors.blue,
+                                //     ),
+                                //     border: OutlineInputBorder(borderSide: BorderSide(color: Colors.blue)),
+                                //     focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.blue)),
+                                //   ),
+                                // ),
+                              ),
+                              Positioned(
+                                left: 10,
+                                top: 3,
+                                child: Container(
+                                  padding: EdgeInsets.symmetric(horizontal: 3),
+                                  color: Colors.white,
+                                  child: Text('Label', style: TextStyle(color: Colors.blue)),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: Center(
+                      child:
+                      Container(
+                        decoration: BoxDecoration(color: Colors.white),
+                        padding: new EdgeInsets.all(20.0),
+                        child: Stack(
+                          children: <Widget>[
+                            Container(
+                              margin: EdgeInsets.only(top: 10),
+                              child: TextField(
+                                textAlign: TextAlign.left,
+                                decoration: InputDecoration(
+                                  labelStyle: TextStyle(
+                                    color: Colors.blue,
+                                  ),
+                                  border: OutlineInputBorder(borderSide: BorderSide(color: Colors.blue)),
+                                  focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.blue)),
+                                ),
+                              ),
+                            ),
+                            Positioned(
+                              left: 10,
+                              top: 3,
+                              child: Container(
+                                padding: EdgeInsets.symmetric(horizontal: 3),
+                                color: Colors.white,
+                                child: Text('Label', style: TextStyle(color: Colors.blue)),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
               ]),
         ),
         notchMargin: 7,
