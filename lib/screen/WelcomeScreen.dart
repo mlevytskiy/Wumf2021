@@ -50,7 +50,7 @@ class _MyStatefulWidgetState extends State<WelcomeScreen> {
         color: const Color(0xffECF1EC),
         shape: const CircularNotchedRectangle(),
         child: Container(
-          height: 150.0,
+          height: 110.0,
           child:
           Row(
               mainAxisSize: MainAxisSize.max,
@@ -59,12 +59,12 @@ class _MyStatefulWidgetState extends State<WelcomeScreen> {
               children: <Widget>[
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.all(20),
+                    padding: const EdgeInsets.only(left: 10, top: 35, right: 10, bottom: 10),
                     child: Center(
                       child:
                       Container(
-                        decoration: BoxDecoration(color: Colors.white),
-                        padding: new EdgeInsets.all(20.0),
+                        decoration: BoxDecoration(color: Color(0xffECF1EC)),
+                        padding: new EdgeInsets.all(10.0),
                         child: InkWell(
                           onTap: () {
                             showDialog(context: context, builder: (context) {
@@ -76,28 +76,25 @@ class _MyStatefulWidgetState extends State<WelcomeScreen> {
                               Container(
                                 decoration: BoxDecoration(
                                   // color: Colors.blue,
+                                  color: Colors.white,
                                   borderRadius: BorderRadius.all(Radius.circular(10.0)),
                                   border: Border.all(color: Colors.blue)
                                 ),
                                 margin: EdgeInsets.only(top: 10),
-                                // child: TextField(
-                                //   textAlign: TextAlign.left,
-                                //   decoration: InputDecoration(
-                                //     labelStyle: TextStyle(
-                                //       color: Colors.blue,
-                                //     ),
-                                //     border: OutlineInputBorder(borderSide: BorderSide(color: Colors.blue)),
-                                //     focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.blue)),
-                                //   ),
-                                // ),
                               ),
                               Positioned(
                                 left: 10,
                                 top: 3,
                                 child: Container(
-                                  padding: EdgeInsets.symmetric(horizontal: 3),
-                                  color: Colors.white,
-                                  child: Text('Label', style: TextStyle(color: Colors.blue)),
+                                  decoration: BoxDecoration(
+                                      gradient: LinearGradient(
+                                          colors: [Color(0xffECF1EC), Colors.white],
+                                          begin: FractionalOffset(0, 0),
+                                          end: FractionalOffset(0, 1),
+                                          stops: [0.0, 1.0],
+                                          tileMode: TileMode.clamp
+                                      )),
+                                  child: Text('Country', style: TextStyle(color: Colors.blue)),
                                 ),
                               )
                             ],
@@ -109,37 +106,45 @@ class _MyStatefulWidgetState extends State<WelcomeScreen> {
                 ),
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.all(20),
+                    padding: const EdgeInsets.only(left: 10, top: 35, right: 10, bottom: 10),
                     child: Center(
                       child:
                       Container(
-                        decoration: BoxDecoration(color: Colors.white),
-                        padding: new EdgeInsets.all(20.0),
-                        child: Stack(
-                          children: <Widget>[
-                            Container(
-                              margin: EdgeInsets.only(top: 10),
-                              child: TextField(
-                                textAlign: TextAlign.left,
-                                decoration: InputDecoration(
-                                  labelStyle: TextStyle(
-                                    color: Colors.blue,
-                                  ),
-                                  border: OutlineInputBorder(borderSide: BorderSide(color: Colors.blue)),
-                                  focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.blue)),
+                        decoration: BoxDecoration(color: Color(0xffECF1EC)),
+                        padding: new EdgeInsets.all(10.0),
+                        child: InkWell(
+                          onTap: () {
+                            showDialog(context: context, builder: (context) {
+                              return AlertDialog(content: Text("Hello form dialog"));
+                            });
+                          },
+                          child: Stack(
+                            children: <Widget>[
+                              Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                                    border: Border.all(color: Colors.blue),
                                 ),
+                                margin: EdgeInsets.only(top: 10),
                               ),
-                            ),
-                            Positioned(
-                              left: 10,
-                              top: 3,
-                              child: Container(
-                                padding: EdgeInsets.symmetric(horizontal: 3),
-                                color: Colors.white,
-                                child: Text('Label', style: TextStyle(color: Colors.blue)),
-                              ),
-                            )
-                          ],
+                              Positioned(
+                                left: 10,
+                                top: 3,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    gradient: LinearGradient(
+                                        colors: [Color(0xffECF1EC), Colors.white],
+                                        begin: FractionalOffset(0, 0),
+                                        end: FractionalOffset(0, 1),
+                                        stops: [0.0, 1.0],
+                                        tileMode: TileMode.clamp
+                                    )),
+                                  child: Text('Language', style: TextStyle(color: Colors.blue,)),
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),
