@@ -1,4 +1,6 @@
 import 'package:bubble/bubble.dart';
+import 'package:country_list_pick/country_list_pick.dart';
+import 'package:country_picker/country_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_game_tutorial/consts.dart';
@@ -47,10 +49,10 @@ class _MyStatefulWidgetState extends State<WelcomeScreen> {
             )),
       ),
       bottomNavigationBar: BottomAppBar(
-        color: const Color(0xffECF1EC),
+        color: Colors.white,
         shape: const CircularNotchedRectangle(),
         child: Container(
-          height: 110.0,
+          height: 130.0,
           child:
           Row(
               mainAxisSize: MainAxisSize.max,
@@ -63,13 +65,11 @@ class _MyStatefulWidgetState extends State<WelcomeScreen> {
                     child: Center(
                       child:
                       Container(
-                        decoration: BoxDecoration(color: Color(0xffECF1EC)),
+                        decoration: BoxDecoration(color: Colors.white),
                         padding: new EdgeInsets.all(10.0),
                         child: InkWell(
                           onTap: () {
-                            showDialog(context: context, builder: (context) {
-                              return AlertDialog(content: Text("Hello form dialog"));
-                            });
+
                           },
                           child: Stack(
                             children: <Widget>[
@@ -88,7 +88,7 @@ class _MyStatefulWidgetState extends State<WelcomeScreen> {
                                 child: Container(
                                   decoration: BoxDecoration(
                                       gradient: LinearGradient(
-                                          colors: [Color(0xffECF1EC), Colors.white],
+                                          colors: [Colors.white, Colors.white],
                                           begin: FractionalOffset(0, 0),
                                           end: FractionalOffset(0, 1),
                                           stops: [0.0, 1.0],
@@ -96,9 +96,50 @@ class _MyStatefulWidgetState extends State<WelcomeScreen> {
                                       )),
                                   child: Text('Country', style: TextStyle(color: Colors.blue)),
                                 ),
-                              )
+                              ),
+                              Container(
+                                width: double.infinity,
+                                height: double.infinity,
+                                padding: EdgeInsets.only(top: 10),
+                              child: CountryListPick(
+                                appBar: AppBar(
+                                  backgroundColor: Colors.amber,
+                                  title: Text('Pick your country'),
+                                ),
+                                // if you need custom picker use this
+                                // pickerBuilder: (context, CountryCode countryCode) {
+                                //   return Row(
+                                //     children: [
+                                //       Image.asset(
+                                //         countryCode.flagUri,
+                                //         package: 'country_list_pick',
+                                //       ),
+                                //       Text(countryCode.code),
+                                //       Text(countryCode.dialCode),
+                                //     ],
+                                //   );
+                                // },
+                                theme: CountryTheme(
+                                  isShowFlag: false,
+                                  isShowTitle: true,
+                                  isShowCode: false,
+                                  isDownIcon: false,
+                                  showEnglishName: true,
+                                  labelColor: Colors.blueAccent,
+                                ),
+                                initialSelection: '+62',
+                                // or
+                                // initialSelection: 'US'
+                                onChanged: (CountryCode code) {
+                                  print(code.name);
+                                  print(code.code);
+                                  print(code.dialCode);
+                                  print(code.flagUri);
+                                },
+                              ),
+                              ),
                             ],
-                          ),
+                        ),
                         ),
                       ),
                     ),
@@ -110,7 +151,7 @@ class _MyStatefulWidgetState extends State<WelcomeScreen> {
                     child: Center(
                       child:
                       Container(
-                        decoration: BoxDecoration(color: Color(0xffECF1EC)),
+                        decoration: BoxDecoration(color: Colors.white),
                         padding: new EdgeInsets.all(10.0),
                         child: InkWell(
                           onTap: () {
@@ -134,7 +175,7 @@ class _MyStatefulWidgetState extends State<WelcomeScreen> {
                                 child: Container(
                                   decoration: BoxDecoration(
                                     gradient: LinearGradient(
-                                        colors: [Color(0xffECF1EC), Colors.white],
+                                        colors: [Colors.white, Colors.white],
                                         begin: FractionalOffset(0, 0),
                                         end: FractionalOffset(0, 1),
                                         stops: [0.0, 1.0],

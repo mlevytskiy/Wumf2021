@@ -32,6 +32,8 @@ dependencies:
   flutter_html: ^2.1.1
   intl: ^0.17.0
   adaptive_theme: ^2.2.0
+  country_picker: ^2.0.8
+  country_list_pick: ^1.0.1+5
 
 dev_dependencies:
   flutter_test:
